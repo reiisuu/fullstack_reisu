@@ -1,13 +1,11 @@
 sequenceDiagram
-    Browser->>+SystemServer: GET Request for HTML
-    SystemServer-->>+Browser: Response (HTML Content)
-
-    Browser->>+SystemServer: GET Request for CSS
-    SystemServer-->>+Browser: Response (CSS Content)
-
-    Browser->>+SystemServer: GET Request for JavaScript
-    SystemServer-->>+Browser: Response (JavaScript Content)
-
-    Browser->>+SystemServer: GET Request for JSON Data
-    SystemServer-->>+Browser: Response (JSON Data Content)
-    
+    User->>+BrowserServer: User adds new note @https://studies.cs.helsinki.fi/exampleapp/notes and clicks save
+    BrowserServer-->>-User: HTTP 302 Redirect to /notes
+    User->>+BrowserServer: GET /notes
+    BrowserServer-->>-User: HTML document
+    User->>+BrowserServer: GET /main.css
+    BrowserServer-->>-User: CSS file
+    User->>+BrowserServer: GET /main.js
+    BrowserServer-->>-User: JavaScript file
+    User->>+BrowserServer: GET /data.json
+    BrowserServer-->>-User: JSON containing updated notes
